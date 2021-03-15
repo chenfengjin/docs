@@ -10,9 +10,13 @@ RUN git clone https://hub.fastgit.org/chenfengjin/sphinx-versions.git
 
 
 COPY ./requirements.txt requirements.txt
+# For build cache 
+COPY ./requirements-extra.txt requirements-extra.txt
 RUN python3 -m pip install requests  -i https://mirrors.aliyun.com/pypi/simple/ 
 RUN python3 -m pip install --upgrade setuptools==44.1.1 -i https://mirrors.aliyun.com/pypi/simple/ 
-RUN python3 -m pip install --no-cache-dir  -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ 
+RUN python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ 
+RUN python3 -m pip install -r requirements-extra.txt -i https://mirrors.aliyun.com/pypi/simple/ 
+
 RUN cd sphinx-versions && python3 setup.py install 
 
 COPY ./.sphinx-server.yml /opt/sphinx-server/

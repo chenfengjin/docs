@@ -20,7 +20,7 @@ serve:
 	docker run --rm -it --name xuperdocs  -p 8000:8000  -v `pwd`/source:/web xuperdocs
 
 lint:
-	docker run --rm -it --name xuperdocs  -p 8000:8000  -v `pwd`:/web xuperdocs doc8 --ignore D001 --ignore D000 --ignore D002 --ignore D004 --ignore D003 source
+	docker run --rm -it -v `pwd`:/web xuperdocs doc8 --ignore D001 --ignore D000 --ignore D002 --ignore D004 --ignore D003 source
 
 build-image:
 	docker build -t xuperdocs  .
