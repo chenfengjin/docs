@@ -1,5 +1,6 @@
 /build/*
 source/_build/*
 _build
-
+source/_build_txt/
 .vscode
+
